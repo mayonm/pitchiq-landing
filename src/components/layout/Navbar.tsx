@@ -1,15 +1,28 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { NAV_LINKS } from "@/lib/constants";
 import { Logo } from "@/components/ui/Logo";
 
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-chalk bg-background/90">
+    <header
+      className={`sticky top-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "border-b border-border bg-white/80 backdrop-blur-md"
+          : "bg-transparent"
+      }`}
+    >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <Logo />
 
@@ -25,7 +38,7 @@ export function Navbar() {
           ))}
           <a
             href="#waitlist"
-            className="rounded-md bg-navy px-4 py-2 text-xs font-medium tracking-wide text-background transition-opacity hover:opacity-90"
+            className="rounded-[var(--radius-btn)] border border-border px-4 py-2 text-xs font-medium text-foreground transition-colors hover:bg-brand-light"
           >
             Get Early Access
           </a>
@@ -42,7 +55,7 @@ export function Navbar() {
       </nav>
 
       {mobileOpen && (
-        <div className="border-t border-chalk bg-background px-6 py-4 md:hidden">
+        <div className="border-t border-border bg-white px-6 py-4 md:hidden">
           <div className="flex flex-col gap-4">
             {NAV_LINKS.map((link) => (
               <a
@@ -56,7 +69,7 @@ export function Navbar() {
             ))}
             <a
               href="#waitlist"
-              className="rounded-md bg-navy px-4 py-2.5 text-center text-xs font-medium text-background"
+              className="rounded-[var(--radius-btn)] border border-border px-4 py-2.5 text-center text-xs font-medium"
               onClick={() => setMobileOpen(false)}
             >
               Get Early Access

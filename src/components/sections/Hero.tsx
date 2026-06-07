@@ -1,52 +1,68 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { HERO } from "@/lib/constants";
-import { StrikeZoneMockup } from "@/components/ui/StrikeZoneMockup";
-import { DiamondPattern } from "@/components/ui/DiamondPattern";
+import { ANNOUNCEMENT, HERO, TRUST_LOGOS } from "@/lib/constants";
+import { ComparisonMockup } from "@/components/ui/StrikeZoneMockup";
+import { Reveal } from "@/components/ui/Reveal";
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden border-b border-chalk">
-      <DiamondPattern />
-
-      <div className="relative mx-auto max-w-7xl px-6 pt-20 pb-24 md:pt-28 md:pb-32">
-        <div className="grid items-center gap-16 lg:grid-cols-2 lg:gap-20">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-          >
-            <p className="mb-6 text-xs font-medium tracking-widest text-clay">
-              {HERO.eyebrow}
+    <section className="section-wash relative overflow-hidden pb-20 pt-12 md:pb-28 md:pt-16">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="flex flex-col items-center text-center">
+          <Reveal onLoad delay={0}>
+            <p className="mb-6 inline-block rounded-full border border-border bg-white px-4 py-1.5 text-xs font-medium text-muted">
+              {ANNOUNCEMENT}
             </p>
-            <h1 className="font-display text-5xl leading-[1.05] tracking-tight text-foreground md:text-6xl lg:text-7xl">
+          </Reveal>
+
+          <Reveal onLoad delay={0.1}>
+            <h1 className="max-w-3xl text-5xl font-semibold leading-[1.1] tracking-tight text-foreground md:text-6xl lg:text-[64px]">
               {HERO.headline}
             </h1>
-            <p className="mt-6 max-w-md text-lg leading-relaxed text-muted">
+          </Reveal>
+
+          <Reveal onLoad delay={0.2}>
+            <p className="mt-6 max-w-lg text-base leading-relaxed text-muted">
               {HERO.subheadline}
             </p>
-            <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
+          </Reveal>
+
+          <Reveal onLoad delay={0.3}>
+            <div className="mt-8 flex flex-col items-center gap-3">
               <a
                 href="#waitlist"
-                className="inline-flex items-center justify-center gap-2 rounded-md bg-navy px-6 py-3 text-sm font-medium text-background transition-opacity hover:opacity-90"
+                className="inline-flex items-center gap-2 rounded-[var(--radius-btn)] bg-brand px-6 py-3 text-sm font-medium text-white transition-opacity hover:opacity-90"
               >
                 {HERO.primaryCta}
                 <ArrowRight className="h-4 w-4" />
               </a>
-              <a
-                href="#how-it-works"
-                className="inline-flex items-center justify-center rounded-md border border-chalk px-6 py-3 text-sm font-medium text-foreground transition-colors hover:border-foreground/20"
-              >
-                {HERO.secondaryCta}
-              </a>
+              <p className="text-xs text-muted">{HERO.microcopy}</p>
             </div>
-          </motion.div>
+          </Reveal>
 
-          <div className="relative mx-auto w-full max-w-md lg:max-w-none">
-            <StrikeZoneMockup variant="hero" />
-          </div>
+          <Reveal onLoad delay={0.4}>
+            <p className="mt-6 text-sm font-medium text-foreground">
+              {HERO.trustLine}
+            </p>
+          </Reveal>
+
+          <Reveal onLoad delay={0.5}>
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-6 md:gap-10">
+              {TRUST_LOGOS.map((logo) => (
+                <span
+                  key={logo}
+                  className="text-xs font-medium tracking-wide text-muted/60 uppercase"
+                >
+                  {logo}
+                </span>
+              ))}
+            </div>
+          </Reveal>
+
+          <Reveal onLoad delay={0.6} className="mt-16 w-full max-w-3xl">
+            <ComparisonMockup />
+          </Reveal>
         </div>
       </div>
     </section>

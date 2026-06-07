@@ -15,9 +15,9 @@ export function SectionHeader({
   light = false,
   className = "",
 }: SectionHeaderProps) {
-  const textColor = light ? "text-background" : "text-foreground";
-  const mutedColor = light ? "text-background/60" : "text-muted";
-  const labelColor = light ? "text-background/50" : "text-clay";
+  const textColor = light ? "text-white" : "text-foreground";
+  const mutedColor = light ? "text-white/60" : "text-muted";
+  const labelColor = light ? "text-white/50" : "text-muted";
 
   return (
     <div
@@ -25,19 +25,19 @@ export function SectionHeader({
     >
       {label && (
         <p
-          className={`mb-3 text-xs font-medium tracking-widest ${labelColor}`}
+          className={`mb-3 text-xs font-medium tracking-widest uppercase ${labelColor}`}
         >
           {label}
         </p>
       )}
       <h2
-        className={`font-display text-3xl md:text-4xl lg:text-5xl tracking-tight ${textColor}`}
+        className={`text-3xl font-semibold tracking-tight md:text-4xl lg:text-[36px] ${textColor}`}
       >
         {title}
       </h2>
       {subtitle && (
         <p
-          className={`mt-4 max-w-2xl text-lg leading-relaxed ${mutedColor} ${align === "center" ? "mx-auto" : ""}`}
+          className={`mt-4 max-w-2xl text-base leading-relaxed ${mutedColor} ${align === "center" ? "mx-auto" : ""}`}
         >
           {subtitle}
         </p>

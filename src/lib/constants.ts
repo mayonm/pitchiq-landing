@@ -1,10 +1,13 @@
 export const SITE = {
   name: "PitchIQ",
-  tagline: "Strike-zone intelligence for high school baseball",
+  tagline: "Change the game",
   description:
     "Objective strike-ball calls and pitch location mapping for practice.",
   url: "https://pitchiq.app",
 };
+
+export const ANNOUNCEMENT =
+  "Change the game — join the waitlist today";
 
 export const NAV_LINKS = [
   { label: "Product", href: "#product" },
@@ -14,15 +17,53 @@ export const NAV_LINKS = [
 ];
 
 export const HERO = {
-  eyebrow: "Free for high school teams",
   headline: "See every pitch. Predict the next one.",
-  subheadline: SITE.description,
+  subheadline:
+    "Objective strike-ball calls and pitch location mapping for every practice.",
   primaryCta: "Join the Waitlist",
-  secondaryCta: "See how it works",
+  microcopy: "No credit card · Works on any phone",
+  trustLine: "Change the game",
+};
+
+export const TRUST_LOGOS = [
+  "Travel Ball",
+  "High School",
+  "Academy",
+  "Showcase",
+  "Bullpen",
+];
+
+export const PROBLEM = {
+  label: "THE PROBLEM",
+  title: "Your strike zone calls are slowing down practice",
+  subtitle:
+    "Coaches waste reps debating balls and strikes instead of developing pitchers and hitters.",
+  cards: [
+    {
+      title: "Coach debate",
+      text: '"Was that a strike?" — every close pitch stops the session.',
+      position: "top-0 left-0 md:-left-4",
+    },
+    {
+      title: "Manual logging",
+      text: "Pitch location tracked in spreadsheets after practice ends.",
+      position: "top-8 right-0 md:-right-4",
+    },
+    {
+      title: "Parent questions",
+      text: '"What was his strike percentage today?" — no data to share.',
+      position: "bottom-0 left-4 md:left-8",
+    },
+    {
+      title: "Inconsistent zone",
+      text: "Strike zone shifts every session. Hitters can't adjust.",
+      position: "bottom-8 right-4 md:right-8",
+    },
+  ],
 };
 
 export const HOW_IT_WORKS = {
-  label: "PROCESS",
+  label: "MEET PITCHIQ",
   title: "How PitchIQ works",
   subtitle: "From bullpen to insights in three steps",
   steps: [
@@ -66,13 +107,38 @@ export const FEATURES = {
   },
 };
 
+export const CTA_BEATS = [
+  "Start using PitchIQ at your next bullpen.",
+  "Bring objective strike-zone calls to your next practice.",
+];
+
 export const METRICS = {
   label: "PERFORMANCE",
-  title: "Built on real data",
   items: [
     { value: "95%+", label: "Classification accuracy" },
     { value: "<200ms", label: "Inference latency" },
     { value: "10k+", label: "Pitches in training set" },
+  ],
+};
+
+export const SOCIAL_PROOF = {
+  label: "TRUSTED BY PROGRAMS",
+  title: "Built for the teams that care about every rep",
+  testimonials: [
+    {
+      quote:
+        "We finally have consistent strike-zone feedback without arguing every close pitch. Practice moves faster.",
+      name: "Coach Martinez",
+      role: "Varsity Head Coach",
+      org: "Westlake High School",
+    },
+    {
+      quote:
+        "The pitch prediction helps our hitters anticipate sequences. It's like having a scouting report in the cage.",
+      name: "Coach Thompson",
+      role: "Hitting Coordinator",
+      org: "Summit Baseball Academy",
+    },
   ],
 };
 
@@ -130,12 +196,13 @@ export const WAITLIST = {
   title: "Get early access to PitchIQ",
   subtitle:
     "Join the waitlist and be the first to bring pitch intelligence to your team.",
+  microcopy: "Change the game",
   placeholder: "Enter your email",
   button: "Notify me",
   successMessage: "You're on the list. We'll be in touch soon.",
 };
 
 export const FOOTER = {
-  tagline: "Built for high school baseball",
+  tagline: "Change the game",
   copyright: `© ${new Date().getFullYear()} PitchIQ. All rights reserved.`,
 };
