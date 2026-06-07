@@ -1,25 +1,30 @@
-"use client";
-
 import { METRICS } from "@/lib/constants";
-import { SectionHeader } from "@/components/ui/SectionHeader";
-import { MetricCard } from "@/components/ui/MetricCard";
 
 export function Metrics() {
   return (
-    <section className="py-20 md:py-28">
+    <section className="bg-navy py-16 md:py-20">
       <div className="mx-auto max-w-7xl px-6">
-        <SectionHeader
-          title="Built on real data"
-          subtitle="Our models are trained and optimized for high school baseball practice"
-        />
-        <div className="grid gap-6 md:grid-cols-3">
-          {METRICS.map((metric, index) => (
-            <MetricCard
-              key={metric.label}
-              value={metric.value}
-              label={metric.label}
-              index={index}
-            />
+        <p className="mb-10 text-center text-xs font-medium tracking-widest text-background/50">
+          {METRICS.label}
+        </p>
+        <div className="flex flex-col items-center justify-center gap-10 md:flex-row md:gap-0">
+          {METRICS.items.map((metric, index) => (
+            <div key={metric.label} className="flex items-center">
+              {index > 0 && (
+                <div
+                  className="mx-10 hidden h-12 w-px bg-background/15 md:block"
+                  aria-hidden="true"
+                />
+              )}
+              <div className="text-center">
+                <p className="font-display text-4xl text-background md:text-5xl">
+                  {metric.value}
+                </p>
+                <p className="mt-2 text-xs font-medium tracking-widest text-background/50 uppercase">
+                  {metric.label}
+                </p>
+              </div>
+            </div>
           ))}
         </div>
       </div>

@@ -1,16 +1,19 @@
-"use client";
-
 import { TEAM } from "@/lib/constants";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { TeamCard } from "@/components/ui/TeamCard";
 
 export function Team() {
   return (
-    <section id="team" className="py-20 md:py-28 bg-black/[0.02]">
+    <section id="team" className="border-b border-chalk py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-6">
-        <SectionHeader title={TEAM.title} subtitle={TEAM.subtitle} />
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {TEAM.members.map((member, index) => (
+        <SectionHeader
+          label={TEAM.label}
+          title={TEAM.title}
+          subtitle={TEAM.subtitle}
+          align="center"
+        />
+        <div className="mx-auto grid max-w-lg gap-16 sm:grid-cols-2 sm:gap-12">
+          {TEAM.members.map((member) => (
             <TeamCard
               key={member.name}
               name={member.name}
@@ -18,7 +21,6 @@ export function Team() {
               bio={member.bio}
               initials={member.initials}
               linkedin={member.linkedin}
-              index={index}
             />
           ))}
         </div>

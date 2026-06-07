@@ -1,15 +1,11 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 
 interface TeamCardProps {
   name: string;
   role: string;
-  bio: string;
+  bio?: string;
   initials: string;
   linkedin: string;
-  index?: number;
 }
 
 export function TeamCard({
@@ -18,30 +14,29 @@ export function TeamCard({
   bio,
   initials,
   linkedin,
-  index = 0,
 }: TeamCardProps) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="flex flex-col items-center text-center p-6 rounded-2xl bg-card border border-border shadow-sm"
-    >
-      <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-accent to-blue-700 text-lg font-semibold text-white">
+    <div className="flex flex-col items-center text-center">
+      <div className="flex h-14 w-14 items-center justify-center rounded-full border border-chalk bg-background font-display text-lg text-accent">
         {initials}
       </div>
-      <h3 className="mt-4 text-lg font-semibold text-foreground">{name}</h3>
-      <p className="text-sm text-accent font-medium">{role}</p>
-      <p className="mt-3 text-sm text-muted leading-relaxed">{bio}</p>
+      <h3 className="mt-5 font-display text-xl text-foreground">{name}</h3>
+      <p className="mt-1 text-xs font-medium tracking-widest text-clay uppercase">
+        {role}
+      </p>
+      {bio && (
+        <p className="mt-3 text-sm text-muted leading-relaxed">{bio}</p>
+      )}
       <a
         href={linkedin}
-        className="mt-4 inline-flex items-center gap-1.5 text-sm text-muted transition-colors hover:text-foreground"
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`inline-flex items-center gap-1.5 text-xs text-muted transition-colors hover:text-foreground ${bio ? "mt-4" : "mt-3"}`}
         aria-label={`${name} on LinkedIn`}
       >
-        <ExternalLink className="h-4 w-4" />
+        <ExternalLink className="h-3.5 w-3.5" />
         LinkedIn
       </a>
-    </motion.div>
+    </div>
   );
 }

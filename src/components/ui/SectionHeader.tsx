@@ -1,36 +1,47 @@
-"use client";
-
-import { motion } from "framer-motion";
-
 interface SectionHeaderProps {
+  label?: string;
   title: string;
   subtitle?: string;
   align?: "left" | "center";
+  light?: boolean;
   className?: string;
 }
 
 export function SectionHeader({
+  label,
   title,
   subtitle,
-  align = "center",
+  align = "left",
+  light = false,
   className = "",
 }: SectionHeaderProps) {
+  const textColor = light ? "text-background" : "text-foreground";
+  const mutedColor = light ? "text-background/60" : "text-muted";
+  const labelColor = light ? "text-background/50" : "text-clay";
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.5 }}
+    <div
       className={`mb-12 md:mb-16 ${align === "center" ? "text-center" : "text-left"} ${className}`}
     >
-      <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-foreground">
+      {label && (
+        <p
+          className={`mb-3 text-xs font-medium tracking-widest ${labelColor}`}
+        >
+          {label}
+        </p>
+      )}
+      <h2
+        className={`font-display text-3xl md:text-4xl lg:text-5xl tracking-tight ${textColor}`}
+      >
         {title}
       </h2>
       {subtitle && (
-        <p className="mt-4 text-lg text-muted max-w-2xl mx-auto leading-relaxed">
+        <p
+          className={`mt-4 max-w-2xl text-lg leading-relaxed ${mutedColor} ${align === "center" ? "mx-auto" : ""}`}
+        >
           {subtitle}
         </p>
       )}
-    </motion.div>
+    </div>
   );
 }

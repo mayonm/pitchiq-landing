@@ -1,8 +1,7 @@
 "use client";
 
 import { useState, FormEvent } from "react";
-import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { WAITLIST } from "@/lib/constants";
 
 export function WaitlistCTA() {
@@ -17,58 +16,41 @@ export function WaitlistCTA() {
   }
 
   return (
-    <section id="waitlist" className="py-20 md:py-28">
-      <div className="mx-auto max-w-7xl px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.5 }}
-          className="relative overflow-hidden rounded-3xl bg-foreground px-8 py-16 text-center md:px-16 md:py-20"
-        >
-          <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-transparent pointer-events-none" />
+    <section id="waitlist" className="bg-navy py-20 md:py-28">
+      <div className="mx-auto max-w-7xl px-6 text-center">
+        <h2 className="font-display text-3xl tracking-tight text-background md:text-4xl">
+          {WAITLIST.title}
+        </h2>
+        <p className="mx-auto mt-4 max-w-md text-background/60 leading-relaxed">
+          {WAITLIST.subtitle}
+        </p>
 
-          <div className="relative">
-            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-background">
-              {WAITLIST.title}
-            </h2>
-            <p className="mx-auto mt-4 max-w-lg text-background/70 leading-relaxed">
-              {WAITLIST.subtitle}
-            </p>
-
-            {submitted ? (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="mt-8 inline-flex items-center gap-2 rounded-full bg-strike/20 px-6 py-3 text-strike"
-              >
-                <CheckCircle className="h-5 w-5" />
-                <span className="font-medium">{WAITLIST.successMessage}</span>
-              </motion.div>
-            ) : (
-              <form
-                onSubmit={handleSubmit}
-                className="mx-auto mt-8 flex max-w-md flex-col gap-3 sm:flex-row"
-              >
-                <input
-                  type="email"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder={WAITLIST.placeholder}
-                  className="flex-1 rounded-full border border-background/20 bg-background/10 px-5 py-3 text-sm text-background placeholder:text-background/50 outline-none focus:border-background/40"
-                />
-                <button
-                  type="submit"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-background px-6 py-3 text-sm font-medium text-foreground transition-opacity hover:opacity-90"
-                >
-                  {WAITLIST.button}
-                  <ArrowRight className="h-4 w-4" />
-                </button>
-              </form>
-            )}
-          </div>
-        </motion.div>
+        {submitted ? (
+          <p className="mt-8 text-sm font-medium text-background/80">
+            {WAITLIST.successMessage}
+          </p>
+        ) : (
+          <form
+            onSubmit={handleSubmit}
+            className="mx-auto mt-10 flex max-w-md flex-col gap-3 sm:flex-row"
+          >
+            <input
+              type="email"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder={WAITLIST.placeholder}
+              className="flex-1 rounded-md border border-background/15 bg-background/5 px-4 py-3 text-sm text-background placeholder:text-background/40 outline-none focus:border-background/30"
+            />
+            <button
+              type="submit"
+              className="inline-flex items-center justify-center gap-2 rounded-md bg-background px-6 py-3 text-sm font-medium text-navy transition-opacity hover:opacity-90"
+            >
+              {WAITLIST.button}
+              <ArrowRight className="h-4 w-4" />
+            </button>
+          </form>
+        )}
       </div>
     </section>
   );
